@@ -1,0 +1,37 @@
+#main.kv
+ScreenManager:
+    MenuScreen:
+    ProfileScreen:
+
+<MenuScreen>:
+    name: 'menu'
+    md_bg_color: 226/255, 0, 48/255, 1
+    Image:
+        source: "images.jfif"
+        pos_hint: {"center_x":0.5, "center_y":0.5}
+        size_hint: .5,.5
+    MDLabel:
+        text:"Saga of battles and adventures"
+        pos_hint: {"center_x":.5,"center_y":.5}
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        font_size: "34sp"
+        font_name: "Poppins-ExtraBoldItalic.ttf"
+    MDRoundFlatIconButton:
+        text: "Start"
+        pos_hint: {"center_x":.5,"center_y":.3}
+        text_color: 0, 0, 0, 1
+        font_size: "34sp"
+        font_name: "Poppins-ExtraBoldItalic.ttf"
+        on_press: root.manager.current= 'profile'
+<ProfileScreen>:
+    name: 'profile'
+    MDLabel:
+        text: 'Welcome Nate'
+        halign: 'center'
+        color: (0,0,0)
+    MDRectangleFlatButton:
+        text: 'Back'
+        pos_hint: {'center_x':0.5, 'center_y':0.2}
+        on_press: root.manager.current = 'menu'
