@@ -28,7 +28,7 @@ class TextQuest(MDApp):
     def build(self):
         screen = Builder.load_file('View/main.kv')
         return screen
-
+#white-background
 
 if __name__ == '__main__':
     TextQuest().run()

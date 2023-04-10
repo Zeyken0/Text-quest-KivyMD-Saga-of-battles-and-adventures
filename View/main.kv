@@ -28,13 +28,26 @@ ScreenManager:
     name: 'game'
     FitImage:
         source: "game-background.jpg"
-    MDLabel:
-        text: 'Welcome Nate'
-        halign: 'center'
-        color: (0,0,0)
+    MDFloatingActionButton:
+        text: 'Back'
+        icon: 'reject-icon.png'
+        icon_size: "34sp"
+        pos_hint: {'center_x':0.45, 'center_y':0.15}
+    MDFloatingActionButton:
+        text: 'Back'
+        icon: 'accept-icon.png'
+        icon_size: "34sp"
+        pos_hint: {'center_x':0.55, 'center_y':0.15}
     MDFloatingActionButton:
         text: 'Back'
         icon: 'settings-icon.png'
         icon_size: "34sp"
         pos_hint: {'center_x':0.05, 'center_y':0.95}
         on_press: root.manager.current = 'menu'
+    MDLabel:
+        text:"Добро пожаловать в Сагу битв и Приключений, вы готовы начать?"
+        pos_hint: {"center_x":.5,"center_y":.7}
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, 1
+        font_size: "34sp"
