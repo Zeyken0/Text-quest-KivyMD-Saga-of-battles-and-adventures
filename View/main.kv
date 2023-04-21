@@ -6,54 +6,56 @@ ScreenManager:
 <MenuScreen>:
     name: 'menu'
     md_bg_color: 226/255, 0, 48/255, 1
-    FitImage:
-        source: "background-image.jpg"
-    MDLabel:
-        text:"Saga of battles and adventures"
-        pos_hint: {"center_x":.5,"center_y":.7}
-        halign: "center"
-        theme_text_color: "Custom"
-        text_color: 0, 0, 0, 1
-        font_size: "34sp"
-        font_name: "Poppins-ExtraBoldItalic.ttf"
-    MDRoundFlatIconButton:
-        text: "Start"
-        pos_hint: {"center_x":.5,"center_y":.3}
-        text_color: 0, 0, 0, 1
-        font_size: "34sp"
-        font_name: "Poppins-ExtraBoldItalic.ttf"
-        on_press: root.manager.current= 'game'
-        md_bg_color: "#FF9933"
-        elevation: 0
+    MDScreen:
+        FitImage:
+            source: "background-image.jpg"
+        MDLabel:
+            text:"Saga of battles and adventures"
+            pos_hint: {"center_x":.5,"center_y":.7}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 0, 0, 0, 1
+            font_size: "34sp"
+            font_name: "Poppins-ExtraBoldItalic.ttf"
+        MDRoundFlatIconButton:
+            text: "Start"
+            pos_hint: {"center_x":.5,"center_y":.3}
+            text_color: 0, 0, 0, 1
+            font_size: "34sp"
+            font_name: "Poppins-ExtraBoldItalic.ttf"
+            on_press: root.manager.current= 'game'
+            md_bg_color: "#FF9933"
+            elevation: 0
 <GameScreen>:
     name: 'game'
-    FitImage:
-        source: "game-background.jpg"
-    MDFloatingActionButton:
-        id: 'reject-button'
-        icon: 'reject-icon.png'
-        icon_size: "34sp"
-        pos_hint: {'center_x':0.45, 'center_y':0.15}
-        on_press: root.next_step(root.save_number, '1')
-        elevation: 0
-    MDFloatingActionButton:
-        id: 'accept-button'
-        icon: 'accept-icon.png'
-        icon_size: "34sp"
-        pos_hint: {'center_x':0.55, 'center_y':0.15}
-        on_press: root.next_step(root.save_number, '0')
-        elevation: 0
-    MDFloatingActionButton:
-        text: 'Back'
-        icon: 'settings-icon.png'
-        icon_size: "34sp"
-        pos_hint: {'center_x':0.05, 'center_y':0.95}
-        on_press: root.manager.current = 'menu'
-        elevation: 0
-    MDLabel:
-        text:root.label_wig
-        pos_hint: {"center_x":.5,"center_y":.7}
-        halign: "center"
-        theme_text_color: "Custom"
-        text_color: 0, 0, 0, 1
-        font_size: "34sp"
+    MDScreen:
+        FitImage:
+            source: "game-background.jpg"
+        MDFloatingActionButton:
+            id: 'reject-button'
+            icon: 'reject-icon.png'
+            icon_size: "34sp"
+            pos_hint: {'center_x':0.45, 'center_y':0.15}
+            on_press: root.next_step(root.save_number, '1')
+            elevation: 0
+        MDFloatingActionButton:
+            id: 'accept-button'
+            icon: 'accept-icon.png'
+            icon_size: "34sp"
+            pos_hint: {'center_x':0.55, 'center_y':0.15}
+            on_press: root.next_step(root.save_number, '0')
+            elevation: 0
+        MDFloatingActionButton:
+            text: 'Back'
+            icon: 'settings-icon.png'
+            icon_size: "34sp"
+            pos_hint: {'center_x':0.05, 'center_y':0.95}
+            on_press: root.manager.current = 'menu'
+            elevation: 0
+        MDLabel:
+            text:root.label_wig
+            pos_hint: {"center_x":.5,"center_y":.7}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 0, 0, 0, 1
+            font_size: "34sp"
