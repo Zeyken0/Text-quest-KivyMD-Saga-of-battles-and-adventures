@@ -7,10 +7,17 @@ from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from kivy.properties import StringProperty, ObjectProperty
 
-main_data = {'0_0': """Добро пожаловать в Сагу битв и Приключений
+user_data = {''}
+save_data = {'0_1': {'accept': '1_0', 'reject': '1_1'},
+             '1_0': {'accept': '2_0', 'reject': '2_1'},
+             '1_1': {'accept': '2_0', 'reject': '2_1'}}
+text_data = {'0_0': """Добро пожаловать в Сагу битв и Приключений
                       вы готовы начать?""",
+             '0_1': """БЛА БЛА БЛА""",
              '1_0': """Поехали. Вы бомж.""",
-             '1_1': """Досвидания!!!"""}
+             '1_1': """Досвидания!!!""",
+             '2_0': """ff""",
+             '2_1': """fffff"""}
 
 
 class MenuScreen(Screen):
@@ -18,19 +25,20 @@ class MenuScreen(Screen):
 
 
 class GameScreen(Screen):
-    label_wig = ObjectProperty(defaultvalue=main_data['0_0'])
-    save_number = StringProperty(defaultvalue='0_0')
+    label_wig = ObjectProperty(defaultvalue=text_data['0_0'])
+    save_number = StringProperty(defaultvalue='0_1')
     variant = StringProperty(defaultvalue='0')
 
-    def next_step(self, save_number, variant):
-        #print(main_data[str(eval(save_number[4:]+'+1'))])
+    def next_step(self, save_number: str, variant: str):
         if variant == '0':
-            save_number = str(eval(save_number.strip('_')[0]+'+1'))+'_'+variant
-            print('Current_step: '+save_number)
+            self.save_number = save_data[save_number]['accept']
+            print('Current_step: ' + save_number)
+            self.label_wig = text_data[save_number]
         else:
-            save_number = str(eval(save_number.strip('_')[0] + '+1')) + '_' + variant
-            print('Current_step: '+save_number)
-        self.label_wig = main_data[save_number] + f"{save_number}"
+            self.save_number = save_data[save_number]['reject']
+            print('Current_step: ' + save_number)
+            self.label_wig = text_data[save_number]
+
 
 sm = ScreenManager()
 sm.add_widget(MenuScreen(name='menu'))
