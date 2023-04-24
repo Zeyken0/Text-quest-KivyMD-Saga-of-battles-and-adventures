@@ -1,4 +1,5 @@
 # Imports
+import json
 from kivymd.app import MDApp
 from kivymd.uix.screenmanager import ScreenManager
 from kivymd.uix.fitimage import FitImage
@@ -7,10 +8,10 @@ from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from kivy.properties import StringProperty, ObjectProperty
 
-main_data = {'0_0': """Добро пожаловать в Сагу битв и Приключений
-                      вы готовы начать?""",
-             '1_0': """Поехали. Вы бомж.""",
-             '1_1': """Досвидания!!!"""}
+with open('data.json', "r", encoding='utf-8') as r:
+    main_data = json.loads(r.read())
+for i in main_data['save_data']:
+    print(i)
 
 
 class MenuScreen(Screen):
@@ -18,19 +19,20 @@ class MenuScreen(Screen):
 
 
 class GameScreen(Screen):
-    label_wig = ObjectProperty(defaultvalue=main_data['0_0'])
-    save_number = StringProperty(defaultvalue='0_0')
+    label_wig = ObjectProperty(defaultvalue=main_data['save_data']['0_0']['save_text'])
+    save_number = StringProperty(defaultvalue='0_1')
     variant = StringProperty(defaultvalue='0')
 
-    def next_step(self, save_number, variant):
-        #print(main_data[str(eval(save_number[4:]+'+1'))])
+    def next_step(self, save_number: str, variant: str):
         if variant == '0':
-            save_number = str(eval(save_number.strip('_')[0]+'+1'))+'_'+variant
-            print('Current_step: '+save_number)
+            self.save_number = main_data['save_data'][save_number]['accept']
+            print('Current_step: ' + save_number)
+            self.label_wig = main_data['save_data'][save_number]['save_text']
         else:
-            save_number = str(eval(save_number.strip('_')[0] + '+1')) + '_' + variant
-            print('Current_step: '+save_number)
-        self.label_wig = main_data[save_number] + f"{save_number}"
+            self.save_number = main_data['save_data'][save_number]['reject']
+            print('Current_step: ' + save_number)
+            self.label_wig = main_data['save_data'][save_number]['save_text']
+
 
 sm = ScreenManager()
 sm.add_widget(MenuScreen(name='menu'))
@@ -51,3 +53,4 @@ class TextQuest(MDApp):
 
 if __name__ == '__main__':
     TextQuest().run()
+    r.close()

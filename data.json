@@ -1,0 +1,30 @@
+{
+  "save_data": {
+    "0_0":
+      {"save_text": "Добро пожаловать в Сагу битв и Приключений\nвы готовы начать?"},
+    "0_1" :
+      {"save_text":"Вы простой мужик, хотите последить за женой",
+      "accept": "1_0",
+      "reject": "1_1"},
+    "1_0":
+      {"save_text": "Поехали. Вы бомж.",
+      "accept": "2_0",
+      "reject": "2_1"},
+    "1_1":
+      {"save_text": "Интерес",
+      "accept": "2_0",
+      "reject": "2_1"},
+    "2_0":
+      {"save_text":"Окей",
+      "accept": "end_issue",
+      "reject": "end_issue"},
+    "2_1":
+      {"save_text":"Не окей",
+      "accept": "end_issue",
+      "reject": "end_issue"},
+    "end_issue":
+      {"save_text":"Вот и настал конец твоей истории... Начать сначала?",
+      "accept": "0_1",
+      "reject": "0_1"}},
+  "user_data": {}
+}
