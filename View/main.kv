@@ -15,13 +15,13 @@ ScreenManager:
         theme_text_color: "Custom"
         text_color: 0, 0, 0, 1
         font_size: "34sp"
-        font_name: "Poppins-ExtraBoldItalic.ttf"
+        font_name: "oldtimerfont.ttf"
     MDRoundFlatIconButton:
         text: "Start"
         pos_hint: {"center_x":.5,"center_y":.3}
         text_color: 0, 0, 0, 1
         font_size: "34sp"
-        font_name: "Poppins-ExtraBoldItalic.ttf"
+        font_name: "oldtimerfont.ttf"
         on_press: root.manager.current= 'game'
         md_bg_color: "#FF9933"
         elevation: 0
@@ -58,10 +58,12 @@ ScreenManager:
         Label:
             text:root.label_wig
             pos_hint: {"center_x":.5,"center_y":.5}
-            size_hint: (1,.25)
-            halign: "center"
-            valign: "top"
+            height: self.texture_size[1]
+            width: self.texture_size[0]
+            font_name: "oldtimerfont"
             theme_text_color: "Custom"
+            text_size: root.width, None
             text_color: 0, 0, 0, 1
-            font_size: "34sp"
-            text_size: self.width, None
+            font_size: '30sp'
+            halign: "auto"
+            valign: "middle"
